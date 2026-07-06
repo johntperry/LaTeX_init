@@ -53,20 +53,24 @@
 \cs_new_protected:Npn \commexo_vector_inner:n #1
  {
   \tl_if_in:VnTF \g_commexo_latin_tl { #1 }
-   {% we check whether the argument is a Latin letter
+   {
+    % we check whether the argument is a Latin letter
     \mathbf { #1 } % a Latin letter
    }
-   {% if not a Latin letter, we check if it's an uppercase Greek letter
+   {
+    % if not a Latin letter, we check if it's an uppercase Greek letter
     \tl_if_in:VnTF \g_commexo_ucgreek_tl { #1 }
      {
       \bm { #1 } % a Greek uppercase letter
      }
-     {% if not, we check if it's a lowercase Greek letter
+     {
+        % if not, we check if it's a lowercase Greek letter
       \tl_if_in:VnTF \g_commexo_lcgreek_tl { #1 }
        {
         \commexo_makeboldupright:n { #1 }
        }
-       {% none of the above, just issue #1
+       {
+        % none of the above, just issue #1
         #1 % fall back
        }
      }
