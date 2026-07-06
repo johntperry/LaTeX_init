@@ -1,0 +1,95 @@
+\documentclass{article}
+
+% Visual style packages
+\usepackage[margin = 2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[nocheck]{fancyhdr}
+\usepackage{titlesec}
+\usepackage{blindtext}
+
+% Maths packages
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{physics}
+
+% Other utility packages
+\usepackage{todonotes}
+\usepackage{tikz}
+\usepackage{siunitx}
+\usepackage{circuitikz}
+\usepackage[hidelinks]{hyperref}
+\usepackage{multicol}
+\usepackage{afterpage}
+\usepackage{lipsum} % For testing
+\usepackage[backend=biber, style=numeric]{biblatex}
+\addbibresource{report_bibliography.bib}
+\usepackage{Packages/johns-package-setup}
+\usepackage{Packages/johns-preferences}
+% Set headers and footers to nothing for the first page
+
+% Setting up headers and footers for fancyhf
+\fancyhf{}
+\fancyhead[R]{Date goes here}
+\fancyhead[L]{Your title here}
+\fancyfoot[C]{\thepage}
+\headsep = 15pt
+\voffset = 10pt
+
+% Title and introduction to the report
+\title{Your title here}
+\author{Name Surname (CRSid)\thanks{Affiliation}}
+\date{Date goes here}
+
+\begin{document}
+
+\pagestyle{empty}
+\newgeometry{margin = 2cm}
+\pagenumbering{arabic}
+
+\maketitle
+
+% Set headers and footers to exist past the title page
+% \afterpage{\thispagestyle{fancy}} % Was useful when not dealing with multicol
+\pagestyle{fancy}
+
+\begin{multicols}{2}
+
+\section{Introduction}
+% Introduce the problem, and contextualise it and the objectives of the experiment/thing being reported on
+
+% For example, remove as desired
+\lipsum[0-3]
+
+%%% DELETE SECTIONS IF INNAPROPRIATE %%%
+
+\section{Method}
+% Explain the method used in order to get the results acquired
+
+% For example, remove as desired
+\lipsum[4-7]
+
+\section{Readings and Results}
+% Give a plain, clinical explaination of the results observed, hypothesising reasons why it might be like that
+\subsection{Observations}
+% State any observations that were made during the experiment, and hypothesise why they may have been made
+
+% More significant in a research context
+\section{Discussion}
+% Critically analyse the findings from previous sections, thereby establishing the significance of them - and in a research context then develop an argument that supports your conclusions (and thereon recommendations)
+
+\section{Conclusions}
+% Reinforce the points raised in the body sections, and ties them together to form an argument. Consolidate your assessment of your research/data and demonstrate existing gaps or problems that will be addressed in recommendations
+
+%\section{Recommendations}
+% In a research context, outline solutions to the problems highlighted in the body/conclusion of your report - also potentially suggesting what action should be undertaken, who should undertake it, what is the time frame of the action, and what costs are involved. Think SMART <---
+
+%\section{References}
+% Add the references that you have made, using data from the included bibliography.
+
+\end{multicols}
+
+\end{document}

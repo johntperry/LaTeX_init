@@ -1,0 +1,22 @@
+%%The package identifies itself and the LaTeX version needed
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{johns-siunits}[2026/05/09 Additional Si units]
+
+\RequirePackage{siunitx}
+\RequirePackage{hyperref}
+\RequirePackage{todonotes}
+
+% Defined SI units
+\DeclareSIUnit\decade{dec}
+\AtBeginDocument{\RenewCommandCopy\qty\SI} % Prefer this definition to the one re-defined by the package physics.
+
+% Hyperref formatting setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    }
+
+% General functions
+\newcommand\todolist{\listoftodos}

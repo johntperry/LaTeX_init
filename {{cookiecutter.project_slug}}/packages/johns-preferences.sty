@@ -1,0 +1,156 @@
+%%Identification
+%%The package identifies itself and the LaTeX version needed
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{johns-preferences}[2026/05/09 Example package]
+
+%%Requeiried packages and preliminary definitions, needed by the options
+\RequirePackage{mathtools}
+\RequirePackage{bm}
+\RequirePackage{upgreek}
+\RequirePackage{xspace}
+% \RequirePackage{unicode-math}
+% \RequirePackage{xcolor}
+% \definecolor{greycolour}{HTML}{525252}
+% \definecolor{sharelatexcolour}{HTML}{882B21}
+% \definecolor{mybluecolour}{HTML}{394773}
+
+%%This parts handles the options passed to the package.
+% \DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
+% \DeclareOption{blue}{\renewcommand{\wordcolour}{mybluecolour}}
+% \DeclareOption*{\PackageWarning{examplepackage}{Unknown ‘\CurrentOption’}}
+% \ProcessOptions\relax
+
+%%Body of the package, most of the declarations appear here.
+
+%%Numbered environment - this is like \begin{example}
+% \newcounter{example}[section]
+% \newenvironment{example}[1][]{\refstepcounter{example}\par\medskip
+% \noindent \textbf{My~environment~\theexample. #1} \rmfamily}{\medskip}
+
+% Causing matrices and vectors to always be upright:
+% TODO: If there is a number that is desired to be a vector, defined a new command such that it will be bolded like others.
+
+\let\Vec\undefined % undefine Vec from amsmath
+
+\ExplSyntaxOn
+\NewDocumentCommand\Vec{m}
+ {
+  \commexo_vector:n { #1 }
+ }
+ \NewDocumentCommand\Mat{m}
+ {
+  \commexo_vector:n { #1 }
+ }
+
+\cs_new_protected:Npn \commexo_vector:n #1
+ {
+  \tl_map_inline:nn { #1 }
+   {
+    \commexo_vector_inner:n { ##1 }
+   }
+ }
+
+\cs_new_protected:Npn \commexo_vector_inner:n #1
+ {
+  \tl_if_in:VnTF \g_commexo_latin_tl { #1 }
+   {% we check whether the argument is a Latin letter
+    \mathbf { #1 } % a Latin letter
+   }
+   {% if not a Latin letter, we check if it's an uppercase Greek letter
+    \tl_if_in:VnTF \g_commexo_ucgreek_tl { #1 }
+     {
+      \bm { #1 } % a Greek uppercase letter
+     }
+     {% if not, we check if it's a lowercase Greek letter
+      \tl_if_in:VnTF \g_commexo_lcgreek_tl { #1 }
+       {
+        \commexo_makeboldupright:n { #1 }
+       }
+       {% none of the above, just issue #1
+        #1 % fall back
+       }
+     }
+   }
+ }
+
+\cs_new_protected:Npn \commexo_makeboldupright:n #1
+ {
+  \bm { \use:c { up \cs_to_str:N #1 } }
+ }
+
+\tl_new:N \g_commexo_latin_tl
+\tl_new:N \g_commexo_ucgreek_tl
+\tl_new:N \g_commexo_lcgreek_tl
+\tl_gset:Nn \g_commexo_latin_tl
+ {
+  ABCDEFGHIJKLMNOPQRSTUVWXYZ
+  abcdefghijklmnopqrstuvwxyz
+ }
+\tl_gset:Nn \g_commexo_ucgreek_tl
+ {
+  \Gamma\Delta\Theta\Lambda\Pi\Sigma\Upsilon\Phi\Chi\Psi\Omega
+ }
+\tl_gset:Nn \g_commexo_lcgreek_tl
+ {
+  \alpha\beta\gamma\delta\epsilon\zeta\eta\theta\iota\kappa
+  \lambda\mu\nu\xi\pi\rho\sigma\tau\upsilon\phi\chi\psi\omega
+  \varepsilon\vartheta\varpi\varphi\varsigma\varrho
+ }
+ \ExplSyntaxOff
+
+% Setting the format of laplace variables
+% unsure of the best way of formatting, the main issue here is if a Laplace variable is also a vector, there may be some confusion between a matrix (which is capital) and a laplace variable (which is often denoted by a capital). 
+% Due to this the current definition is using the overline convention as it may be used in conjunction with demonstrating if a variable is a vector.
+
+\newcommand*{\Lap}[1]{\overline{#1}}
+
+% Transpose, conjugate and hermitian transpose symbols
+% Add ^ before brace before \mkern to make this superscript
+\newcommand*{\tran}{{\mkern-1.5mu\mathsf{T}}} 
+\newcommand*{\conj}[1]{\overline{#1}}
+\newcommand*{\herm}{{\mathsf{H}}}
+
+%%%
+% Mathematical notations
+%%%
+
+% The full and 'partial' d
+\providecommand*{\dd}{\mathrm{d}}
+\newcommand*{\del}{\ensuremath{\partial}}
+% Eulers constant
+\providecommand*{\eu}{\ensuremath{\mathrm{e}}}
+% The imaginary unit
+\newcommand*{\iu}{\ensuremath{\mathrm{j}}}
+% Re and Im as notating
+% \providecommand*{\Re}{\mathrm{Re}}{\nolimits}
+% \providecommand*{\Im}{\mathrm{Im}}{\nolimits}
+% Full derivative and partial derivative
+\providecommand*{\deriv}[3][]{
+    \frac{\dd^{#1}#2}{\dd #3^{#1}}}
+\providecommand*{\pderiv}[3][]{
+    \frac{\del^{#1}#2}{\del #3^{#1}}}
+
+% Equilibrium signifier
+\newcommand*{\eq}{\text{eq}}
+
+% Various mathematical things
+\newcommand*{\diag}{\text{diag}}
+
+% Bold and underline shortcuts in equations
+\newcommand*{\bs}[1]{\boldsymbol{#1}}
+\newcommand*{\ul}[1]{\underline{#1}}
+
+% Changing matrix stretching
+\renewcommand{\arraystretch}{1}
+
+% Equation numbering
+\numberwithin{equation}{section}
+
+% Update function to set text colour
+\newcommand\textcolour[2]{\textcolor{#1}{#2}}
+
+% Function to nicely format the MATLAB logo
+\newcommand*{\MATLAB}{\textsc{Matlab}\xspace}
+
+% Keep at end of package
+\AtBeginDocument{\let\latexlabel\label}
