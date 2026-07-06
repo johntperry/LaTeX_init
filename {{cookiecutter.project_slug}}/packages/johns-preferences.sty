@@ -106,12 +106,12 @@
 % unsure of the best way of formatting, the main issue here is if a Laplace variable is also a vector, there may be some confusion between a matrix (which is capital) and a laplace variable (which is often denoted by a capital). 
 % Due to this the current definition is using the overline convention as it may be used in conjunction with demonstrating if a variable is a vector.
 
-\newcommand*{\Lap}[1]{\overline{#1}}
+\newcommand*{\Lap}[1]{\overline{ #1 }}
 
 % Transpose, conjugate and hermitian transpose symbols
 % Add ^ before brace before \mkern to make this superscript
 \newcommand*{\tran}{{\mkern-1.5mu\mathsf{T}}} 
-\newcommand*{\conj}[1]{\overline{#1}}
+\newcommand*{\conj}[1]{\overline{ #1 }}
 \newcommand*{\herm}{{\mathsf{H}}}
 
 %%%
@@ -130,9 +130,9 @@
 % \providecommand*{\Im}{\mathrm{Im}}{\nolimits}
 % Full derivative and partial derivative
 \providecommand*{\deriv}[3][]{
-    \frac{\dd^{#1}#2}{\dd #3^{#1}}}
+    \frac{\dd^{ #1 } #2 }{\dd #3^{ #1 }}}
 \providecommand*{\pderiv}[3][]{
-    \frac{\del^{#1}#2}{\del #3^{#1}}}
+    \frac{\del^{ #1 } #2 }{\del #3^{ #1 }}}
 
 % Equilibrium signifier
 \newcommand*{\eq}{\text{eq}}
@@ -141,8 +141,8 @@
 \newcommand*{\diag}{\text{diag}}
 
 % Bold and underline shortcuts in equations
-\newcommand*{\bs}[1]{\boldsymbol{#1}}
-\newcommand*{\ul}[1]{\underline{#1}}
+\newcommand*{\bs}[1]{\boldsymbol{ #1 }}
+\newcommand*{\ul}[1]{\underline{ #1 }}
 
 % Changing matrix stretching
 \renewcommand{\arraystretch}{1}
@@ -151,7 +151,7 @@
 \numberwithin{equation}{section}
 
 % Update function to set text colour
-\newcommand\textcolour[2]{\textcolor{#1}{#2}}
+\newcommand\textcolour[2]{\textcolor{ #1 }{ #2 }}
 
 % Function to nicely format the MATLAB logo
 \newcommand*{\MATLAB}{\textsc{Matlab}\xspace}
