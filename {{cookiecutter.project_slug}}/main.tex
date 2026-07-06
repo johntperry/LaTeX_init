@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[11pt]{{ "{" }}{{cookiecutter.document_class}}{{ "}" }}
 
 % Visual style packages
 \usepackage[margin = 2.5cm]{geometry}
@@ -33,16 +33,16 @@
 
 % Setting up headers and footers for fancyhf
 \fancyhf{}
-\fancyhead[R]{Date goes here}
-\fancyhead[L]{Your title here}
+\fancyhead[R]{\today}
+\fancyhead[L]{{{cookiecutter.project_name}}}
 \fancyfoot[C]{\thepage}
 \headsep = 15pt
 \voffset = 10pt
 
 % Title and introduction to the report
-\title{Your title here}
-\author{Name Surname (CRSid)\thanks{Affiliation}}
-\date{Date goes here}
+\title{{{cookiecutter.project_name}}}
+\author{{{cookiecutter.author_name}}\thanks{{{cookiecutter.author_affiliation}}}}
+\date{\today}
 
 \begin{document}
 
