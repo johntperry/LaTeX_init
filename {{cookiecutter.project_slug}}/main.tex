@@ -34,14 +34,14 @@
 % Setting up headers and footers for fancyhf
 \fancyhf{}
 \fancyhead[R]{\today}
-\fancyhead[L]{ {{cookiecutter.project_name}} }
+\fancyhead[L]{{ "{" }}{{cookiecutter.project_name}}{{ "}" }}
 \fancyfoot[C]{\thepage}
 \headsep = 15pt
 \voffset = 10pt
 
 % Title and introduction to the report
-\title{ {{cookiecutter.project_name}} }
-\author{ {{cookiecutter.author_name}} \thanks{ {{cookiecutter.author_affiliation}} }}
+\title{{ "{" }}{{cookiecutter.project_name}}{{ "}" }}
+\author{{ "{" }}{{cookiecutter.author_name}}{{ "}" }\thanks{{ "{" }}{{cookiecutter.author_affiliation}}{{ "}" }}}
 \date{\today}
 
 \begin{document}
