@@ -1,4 +1,4 @@
-\documentclass[11pt]{{ "{" }}{{cookiecutter.document_class}}{{ "}" }}
+\documentclass[11pt,a4paper]{{ "{" }}{{cookiecutter.document_class}}{{ "}" }}
 
 % --- Common Packages across layouts --- %
 \usepackage{microtype}
@@ -8,6 +8,7 @@
 \usepackage{todonotes}
 \usepackage{dirtytalk}
 \usepackage{siunitx}
+\usepackage{lipsum} % For testing
 
 {% if cookiecutter.document_class == 'article' or cookiecutter.document_class == 
 
@@ -35,14 +36,16 @@
 % Other utility packages
 \usepackage{multicol}
 \usepackage{afterpage}
-\usepackage{lipsum} % For testing
 \usepackage[backend=biber, style=numeric]{biblatex}
 \addbibresource{references.bib}
 
-{% elif cookiecutter.document_class == 'letter' %}
+{% elif cookiecutter.document_class == 'moderncv' %}
 
 % Letter specific packages %
 \usepackage[margin = 3cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\renewcommand{\sfdefault}{lmss}
 
 {% endif %}
 
@@ -131,11 +134,40 @@
 %       REPORT / LONG REPORT TEMPLATE            %
 % ============================================== %
 
-{% elif cookiecutter.document_class == 'letter' %}
+{% elif cookiecutter.document_class == 'moderncv' %}
 % =============================== %
 %        LETTER TEMPLATE          %
 % =============================== %
 
+\moderncvstyle{classic}
+\moderncvcolor{green}
 
+% Personal details
+\name{{ "{" }}{{cookiecutter.author_name}}{{ "}" }}{Surname}
+
+\title{Cover Letter}
+\address{Cambridge}{United Kingdom}
+\phone[mobile]{Phone Number}
+\email{Email}
+
+
+
+\recipient{Recipient Name}{Company Name\\123 Street Road\\City}
+\date{\today}
+\opening{Dear Recipient,}
+\closing{Sincerely,}
+\enclosure[Attached]{CV}
+
+
+\begin{document}
+\makelettertitle
+
+\lipsum[1-3]
+
+\vspace{0.5cm}
+
+\makeletterclosing
+
+\end{document}
 
 {% endif %}
