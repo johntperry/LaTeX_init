@@ -9,7 +9,9 @@
 \usepackage{dirtytalk}
 \usepackage{siunitx}
 
-{% if cookiecutter.document_class == 'article' or cookiecutter.document_class == 'report' %}
+{% if cookiecutter.document_class == 'article' or cookiecutter.document_class == 
+
+% Equation numbering'report' %}
 
 % Article and report specific packages %
 
@@ -50,6 +52,9 @@
 
 {% if cookiecutter.document_class == 'article' %}
 % Article/short report template %
+
+% Article/short report template specific tweaks -- consider turning into a new (conditional) package
+\numberwithin{equation}{section}
 
 % Setting up headers and footers for fancyhf
 \fancyhf{}
