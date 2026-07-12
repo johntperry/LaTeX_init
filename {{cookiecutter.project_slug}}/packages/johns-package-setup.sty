@@ -1,10 +1,11 @@
 %%The package identifies itself and the LaTeX version needed
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{johns-package-setup}[2026/05/09 Additional Si units]
+\ProvidesPackage{johns-package-setup}[2026/07/12 xcolor define CambridgeBlue]
 
 \RequirePackage{siunitx}
 \RequirePackage{hyperref}
 \RequirePackage{todonotes}
+\RequirePackage{xcolor}
 
 % Defined SI units
 \DeclareSIUnit\decade{dec}
@@ -20,3 +21,6 @@
 
 % General functions
 \newcommand\todolist{\listoftodos}
+
+% xcolor Colour definitions
+\definecolor{CambridgeBlue}{rgb}{.639 .757 .678}

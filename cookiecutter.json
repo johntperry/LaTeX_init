@@ -3,5 +3,9 @@
     "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
     "author_name": "Your Name",
     "author_affiliation": "Affiliation",
-    "document_class": "article"
+    "document_class": [
+        "article",
+        "report",
+        "letter"
+    ]
 }

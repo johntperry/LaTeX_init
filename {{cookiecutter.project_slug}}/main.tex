@@ -1,9 +1,20 @@
 \documentclass[11pt]{{ "{" }}{{cookiecutter.document_class}}{{ "}" }}
 
-% Visual style packages
-\usepackage[margin = 2.5cm]{geometry}
+% --- Common Packages across layouts --- %
+\usepackage{microtype}
 \usepackage{graphicx}
-\usepackage[table,xcdraw]{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage{todonotes}
+\usepackage{dirtytalk}
+\usepackage{siunitx}
+
+{% if cookiecutter.document_class == 'article' or 'report' %}
+% Article and report specific packages %
+
+% Visual style packages
+
+\usepackage[margin = 2.5cm]{geometry}
 \usepackage{wrapfig}
 \usepackage{caption}
 \usepackage{subcaption}
@@ -11,26 +22,33 @@
 \usepackage{titlesec}
 \usepackage{blindtext}
 
-% Maths packages
+% Maths / Science packages
 \usepackage{amsfonts, amssymb, amsmath, amsthm}
 \usepackage{bm}
 \usepackage{physics}
+\usepackage{tikz}
+\usepackage{circuitikz}
 
 % Other utility packages
-\usepackage{dirtytalk}
-\usepackage{todonotes}
-\usepackage{tikz}
-\usepackage{siunitx}
-\usepackage{circuitikz}
-\usepackage[hidelinks]{hyperref}
 \usepackage{multicol}
 \usepackage{afterpage}
 \usepackage{lipsum} % For testing
 \usepackage[backend=biber, style=numeric]{biblatex}
 \addbibresource{references.bib}
+
+{% elif cookiecutter.document_class == 'letter' %}
+
+% Letter specific packages %
+\usepackage[margin = 3cm]{geometry}
+
+{% endif %}
+
+% My (John's) personal utility packages
 \usepackage{packages/johns-package-setup}
 \usepackage{packages/johns-preferences}
-% Set headers and footers to nothing for the first page
+
+{% if cookiecutter.document_class == 'article' %}
+% Article/short report template %
 
 % Setting up headers and footers for fancyhf
 \fancyhf{}
@@ -99,3 +117,13 @@
 \end{multicols}
 
 \end{document}
+
+{% elif cookiecutter.document_class == 'report' %}
+% Report/long report template %
+
+{% elif cookiecutter.document_class == 'letter' %}
+% Letter template %
+
+
+
+{% endif %}
