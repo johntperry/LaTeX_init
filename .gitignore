@@ -6,3 +6,5 @@
 *.gz
 *.dvi
 *.pdf
+*.fdb_latexmk
+*.fls
