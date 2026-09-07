@@ -1,6 +1,6 @@
-# LaTeX initialisation
+# $ \LaTeX $ initialisation
 
-LaTeX_init uses cookiecutter to instantly generate an instance of a LaTeX document in the format desired. It solves the problem of wanting to use LaTeX to format a given document due to its versatility without the hassle of having to copy/paste previous LaTeX projects or needing to change a number of different in-text sections that would be required by using `git clone` by asking a series of simple questions and actively inputting where appropriate.
+LaTeX_init uses the python package cookiecutter to instantly generate an instance of a $ \LaTeX $ document in the format desired. It solves the problem of wanting to use $ \LaTeX $ to format a given document due to its versatility without the hassle of having to copy/paste previous $ \LaTeX $ projects or needing to change a number of different in-text sections that would be required by using `git clone` by asking a series of simple questions and actively inputting where appropriate.
 
 By default, this project allows the choice of a few different document formats which are appropriate for different document formats. Currently, this includes:
 - `article`: For short documents to short reports, this does it all!
